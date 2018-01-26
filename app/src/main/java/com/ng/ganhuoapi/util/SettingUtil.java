@@ -41,7 +41,7 @@ public class SettingUtil {
      * @return
      */
     public boolean getIsCancleSp() {
-        return setting.getBoolean("key_IsCancleSp", true);
+        return setting.getBoolean("key_IsCancleSp", false);
     }
 
     public void setIsIsCancleSp(boolean flag) {

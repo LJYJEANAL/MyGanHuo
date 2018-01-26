@@ -142,6 +142,7 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                     title = "日间模式";
 
                 }
+
                 navigationView.getMenu().findItem(R.id.nav_camera).setIcon(icon);
                 navigationView.getMenu().findItem(R.id.nav_camera).setTitle(title);
                 SettingUtil.getInstance().setIsIsCancleSp(true);

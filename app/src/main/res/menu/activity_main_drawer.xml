@@ -9,7 +9,7 @@
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_night"
             android:title="日间模式" />
-        <item
+      <!--  <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="环" />
@@ -20,6 +20,6 @@
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="换肤蓝红" />
+            android:title="换肤蓝红" />-->
     </group>
 </menu>

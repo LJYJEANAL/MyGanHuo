@@ -12,7 +12,6 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ng.ganhuoapi.util.SettingUtil;
@@ -22,17 +21,15 @@ import java.util.Random;
 
 public class SplashActivity extends AppCompatActivity {
     private TextView[] ts;
-
     private View container;
-    private boolean animComplete;
-    private boolean initComplete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (SettingUtil.getInstance().getIsCancleSp()) {
             startMainActivity();
-        }else{
+        } else {
             setContentView(R.layout.activity_splash);
             initViews();
         }
@@ -113,17 +110,17 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void startFinalAnim() {
-        final ImageView image = (ImageView) findViewById(R.id.splash_logo);
+        final TextView image = (TextView) findViewById(R.id.splash_logo);
         final TextView name = (TextView) findViewById(R.id.splash_name);
 
         ValueAnimator alpha = ObjectAnimator.ofFloat(image, "alpha", 0.0f, 1.0f);
-        alpha.setDuration(1000);
+        alpha.setDuration(1500);
         ValueAnimator alphaN = ObjectAnimator.ofFloat(name, "alpha", 0.0f, 1.0f);
-        alphaN.setDuration(1000);
+        alphaN.setDuration(1500);
         ValueAnimator tranY = ObjectAnimator.ofFloat(image, "translationY", -image.getHeight() / 3, 0);
-        tranY.setDuration(1000);
+        tranY.setDuration(1500);
         ValueAnimator wait = ObjectAnimator.ofInt(0, 100);
-        wait.setDuration(1000);
+        wait.setDuration(1500);
         wait.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
@@ -156,7 +153,6 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onAnimationStart(Animator animation) {
                 image.setVisibility(View.VISIBLE);
-                name.setVisibility(View.VISIBLE);
             }
 
             @Override
