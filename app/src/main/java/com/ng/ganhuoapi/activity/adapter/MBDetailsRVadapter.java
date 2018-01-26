@@ -45,13 +45,16 @@ public class MBDetailsRVadapter extends BaseQuickAdapter<PersonBean, BaseViewHol
         layoutParams.setMargins(20, 20, 0, 0);
         if (item != null) {
             String imgUrl = null;
-            if (item.getAvatars().getLarge() != null) {
-                imgUrl = item.getAvatars().getLarge();
-            } else if (item.getAvatars().getMedium() != null) {
-                imgUrl = item.getAvatars().getMedium();
-            } else if (item.getAvatars().getSmall() != null) {
-                imgUrl = item.getAvatars().getSmall();
+            if (item.getAvatars()!=null){
+                if (item.getAvatars().getLarge() != null) {
+                    imgUrl = item.getAvatars().getLarge();
+                } else if (item.getAvatars().getMedium() != null) {
+                    imgUrl = item.getAvatars().getMedium();
+                } else if (item.getAvatars().getSmall() != null) {
+                    imgUrl = item.getAvatars().getSmall();
+                }
             }
+
 
             if (imgUrl != null) {
                 Glide.with(mContext).load(imgUrl)

@@ -86,7 +86,7 @@ public class MovieContentRVadapter extends BaseMultiItemQuickAdapter<SubItemsBea
                         @Override
                         public void run() {
                             int measuredWidth=movie_poster.getMeasuredWidth();
-//                            Log.i("信息")
+                            movie_poster.getLayoutParams().height= (int) (measuredWidth*1.25);
                         }
                     });
                     customCardView.setTag(movie_poster);
