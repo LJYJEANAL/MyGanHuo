@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="gankio_title">
+        <item>all</item>
+
+        <item>Android</item>
+        <item>iOS</item>
+        <item>前端</item>
+        <item>拓展资源</item>
+        <item>休息视频</item>
+        <item>福利</item>
+    </string-array>
+    <string-array name="book_title">
+        <item>文学</item>
+        <item>文化</item>
+        <item>生活</item>
+        <item>经典</item>
+        <item>故事</item>
+        <item>励志</item>
+        <item>言情</item>
+        <item>寓言</item>
+        <item>传记</item>
+
+        <item>心理</item>
+        <item>玄幻</item>
+        <item>武侠</item>
+        <item>仙侠</item>
+
+        <item>历史</item>
+        <item>军事</item>
+        <item>科幻</item>
+        <item>游戏</item>
+        <item>竞技</item>
+
+        <item>侦探</item>
+        <item>悬疑</item>
+        <item>短篇</item>
+        <item>灵异</item>
+
+
+        <item>现言</item>
+        <item>都市</item>
+        <item>职场</item>
+        <item>穿越</item>
+        <item>总裁</item>
+        <item>青春</item>
+        <item>耽美</item>
+        <item>同人</item>
+        <item>轻小说</item>
+
+    </string-array>
+    <string-array name="movie_title">
+        <item>正在热映</item>
+        <item>即将上映</item>
+        <item>Top250</item>
+        <item>北美票房榜</item>
+
+     <!--   <item>新片榜</item>
+        <item>口碑榜</item>-->
+    </string-array>
+
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/main"
+        android:icon="@drawable/ic_account_balance_black_24dp"
+        android:title="首页"/>
+
+    <item
+        android:id="@+id/gankio"
+        android:icon="@drawable/ic_g_translate_black_24dp"
+        android:title="干货"/>
+
+    <item
+        android:id="@+id/movie"
+        android:icon="@drawable/ic_remove_from_queue_black_24dp"
+        android:title="影视"/>
+    <!--<item
+        android:id="@+id/photo"
+        android:icon="@drawable/ic_collections_black_24dp"
+        android:title="图片"/>-->
+
+    <item
+        android:id="@+id/book"
+        android:icon="@drawable/ic_book_black_24dp"
+        android:title="书籍"/>
+</menu>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rg_content_layout"
+    android:fitsSystemWindows="true">
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/rl_top_toast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp"
+        app:contentPadding="8dp"
+        android:layout_centerHorizontal="true"
+        app:cardBackgroundColor="?attr/colorPrimary"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_toast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:text="已为您推荐了%1$s条新资讯"
+            android:textColor="@color/md_white"
+            android:textSize="12sp" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_arrow_upward_black_24dp"
+        app:backgroundTint="?attr/colorPrimary"
+        app:borderWidth="5dp"
+        app:elevation="5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        app:rippleColor="#33728dff" />
+    <include
+        android:id="@+id/empty_layout"
+        layout="@layout/empty_error_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"></include>
+</RelativeLayout>

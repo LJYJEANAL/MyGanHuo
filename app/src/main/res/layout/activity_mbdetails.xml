@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ng.ganhuoapi.activity.MBDetailsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_Layout"
+            android:layout_width="match_parent"
+            android:layout_height="330dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentScrim="@android:color/transparent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:statusBarScrim="@android:color/transparent"
+            app:title=" "
+            app:titleEnabled="false">
+
+            <ImageView
+                android:id="@+id/iv_header_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop" />
+
+            <include
+                layout="@layout/mb_detail_header"></include>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:contentInsetLeft="0dp"
+                app:contentInsetRight="0dp"
+                app:layout_collapseMode="pin"
+                app:layout_collapseParallaxMultiplier="0.7"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/AppThemeDark"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:title=" ">
+
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+    <include
+        android:id="@+id/scroll_layout"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        layout="@layout/sub_book_detail_mid"></include>
+
+</android.support.design.widget.CoordinatorLayout>

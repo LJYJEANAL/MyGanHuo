@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="img_nodata_loading">
+        <item>@drawable/img_nodata_loading_aec5f1</item>
+        <item>@drawable/img_nodata_loading_a4d6a3</item>
+        <item>@drawable/img_nodata_loading_ecc29c</item>
+        <item>@drawable/img_nodata_loading_f0b2b3</item>
+    </array>
+</resources>

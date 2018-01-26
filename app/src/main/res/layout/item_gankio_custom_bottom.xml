@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/dp_10"
+    android:paddingRight="@dimen/dp_10"
+    android:paddingTop="@dimen/dp_10">
+
+    <ImageView
+        android:id="@+id/iv_type_item_title"
+        android:layout_width="20dip"
+        android:layout_height="20dip"
+        android:padding="2dip" />
+
+    <TextView
+        android:id="@+id/tv_item_who_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dip"
+        android:layout_toRightOf="@+id/iv_type_item_title"
+        android:textSize="@dimen/sp_14" />
+
+    <TextView
+        android:id="@+id/tv_item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="2017-10-22"
+        android:textSize="@dimen/sp_14" />
+</RelativeLayout>

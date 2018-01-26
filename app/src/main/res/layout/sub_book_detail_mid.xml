@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!--作者简介-->
+        <LinearLayout
+            android:id="@+id/mb_aka_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:visibility="invisible">
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="18dp"
+                android:background="?attr/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tv_book_aka"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textSize="17sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_book_author_intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="7dp"
+            android:padding="12dp"
+            android:background="@drawable/bottom_item_color"
+            android:textSize="16sp" />
+
+        <!--本书简介-->
+        <LinearLayout
+
+            android:id="@+id/mb_summary_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="10dp"
+            android:visibility="invisible">
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="18dp"
+                android:background="?attr/colorPrimary" />
+
+            <TextView
+                android:id="@+id/summary_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_book_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="7dp"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <!--目录-->
+        <LinearLayout
+            android:id="@+id/mb_avatars_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="10dp"
+            android:visibility="invisible">
+
+            <View
+                android:layout_width="2dp"
+                android:layout_height="18dp"
+                android:background="?attr/colorPrimary" />
+
+            <TextView
+                android:id="@+id/avatars_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+        <!--目录-->
+        <TextView
+            android:id="@+id/tv_book_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="7dp"
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mb_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
