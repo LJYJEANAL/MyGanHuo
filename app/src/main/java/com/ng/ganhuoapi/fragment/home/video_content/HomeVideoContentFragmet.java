@@ -66,6 +66,7 @@ public class HomeVideoContentFragmet extends BaseFragment<HomeVideoContentPresen
     private int start = 1;
     private HomeRootFragment homeRootFragment;
 
+
     public static HomeVideoContentFragmet newInstance(HomeRootFragment homeRootFragment, String categoryId) {
         HomeVideoContentFragmet fragment = new HomeVideoContentFragmet();
         fragment.categoryId = categoryId;
@@ -236,7 +237,7 @@ public class HomeVideoContentFragmet extends BaseFragment<HomeVideoContentPresen
 
     @Override
     public void showData(Collection<? extends HomeContentDataBean> data) {
-        List<HomeContentDataBean> dataBeanList = (List<HomeContentDataBean>) data;
+        List<HomeContentDataBean>   dataBeanList= (List<HomeContentDataBean>) data;
         final int siaze = dataBeanList == null ? 0 : dataBeanList.size();
         if (isLoadMore) {
             videoContentRecyAdapter.addData(dataBeanList);

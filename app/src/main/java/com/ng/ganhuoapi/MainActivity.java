@@ -1,7 +1,6 @@
 package com.ng.ganhuoapi;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
@@ -25,6 +24,7 @@ import com.ng.ganhuoapi.fragment.home.HomeRootFragment;
 import com.ng.ganhuoapi.util.ActivityCollector;
 import com.ng.ganhuoapi.util.BottomNavigationViewHelper;
 import com.ng.ganhuoapi.util.Listener;
+import com.ng.ganhuoapi.util.Public;
 import com.ng.ganhuoapi.util.SettingUtil;
 import com.shuyu.gsyvideoplayer.utils.CommonUtil;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
@@ -142,18 +142,19 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                     title = "日间模式";
 
                 }
-
                 navigationView.getMenu().findItem(R.id.nav_camera).setIcon(icon);
                 navigationView.getMenu().findItem(R.id.nav_camera).setTitle(title);
                 SettingUtil.getInstance().setIsIsCancleSp(true);
                 SettingUtil.getInstance().setIsFirstTime(false);
-                final Intent intent = getPackageManager().getLaunchIntentForPackage(getPackageName());
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-
+                Public.reStartActivity(this);
                 break;
         }
         return true;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 
     private void setupViewPager(ViewPager viewPager) {

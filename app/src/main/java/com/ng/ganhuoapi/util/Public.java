@@ -1,9 +1,12 @@
 package com.ng.ganhuoapi.util;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.os.Environment;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -25,21 +28,66 @@ import java.util.Random;
  */
 
 public class Public {
+    /**
+     * 字体大小-36px
+     */
+    public static float textSize_36px;
+    /**
+     * 字体大小-34px
+     */
+    public static float textSize_34px;
+    /**
+     * 字体大小-32px
+     */
+    public static float textSize_32px;
+    /**
+     * 字体大小-30px
+     */
+    public static float textSize_30px;
+    /**
+     * 字体大小-28px
+     */
+    public static float textSize_28px;
+    /**
+     * 字体大小-26px
+     */
+    public static float textSize_26px;
+    /**
+     * 字体大小-24px
+     */
+    public static float textSize_24px;
+    /**
+     * 字体大小-22px
+     */
+    public static float textSize_22px;
+    /**
+     * 字体大小-20px
+     */
+    public static float textSize_20px;
 
-    //     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            getWindow().setStatusBarColor(getResources().getColor(R.color.colorPrimary));
-//        }
-//    }
-    public static boolean checkBuildVERSIONCode() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                return true;
-            } else {
-                return false;
+    /**
+     * 方法说明：多屏幕字体大小适应
+     */
+    public static float getTextSize(Context context, float ratio) {
+        return getTextSize(context, ratio, true);
+    }
+
+    /**
+     * 方法说明：多屏幕字体大小适应
+     */
+    public static float getTextSize(Context context, float ratio, boolean limit) {
+        DisplayMetrics dm = context.getResources().getDisplayMetrics();
+        int width = Math.min(dm.widthPixels, dm.heightPixels);
+        float dpiWidth = width / dm.density;
+        float size = ratio * dpiWidth;
+        if (limit) {
+            if (size < 6f) {
+                return 6f;
+            } else if (size > 20f) {
+                return 20f;
             }
         }
-        return false;
+        return size;
     }
 
     /**
@@ -59,6 +107,37 @@ public class Public {
             statusBarHeight = (int) Math.ceil(25 * context.getResources().getDisplayMetrics().density);
         }
         return statusBarHeight;
+    }
+
+    /**
+     * 重新启动当前activity
+     */
+    public static void reStartActivity(Activity activity) {
+        Intent intent = activity.getIntent();
+        activity.finish();
+//        activity.startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(activity).toBundle());
+        activity. startActivity(intent);
+        activity.  overridePendingTransition(0,0);
+    }
+
+    /**
+     * 整个应用重新启动
+     * @param activity
+     */
+    public static void reStartAPP(Activity activity){
+        final Intent intent = activity.getPackageManager().getLaunchIntentForPackage(activity.getPackageName());
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        activity. startActivity(intent);
+    }
+    public static boolean checkBuildVERSIONCode() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
     }
 
     private static ArrayList<Integer> nodataLoadingIds;
