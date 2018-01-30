@@ -21,7 +21,6 @@ import com.ng.ganhuoapi.util.TimeUtil;
 import com.ng.ganhuoapi.video.ListVideoPlayer;
 import com.ng.ganhuoapi.video.VideoListener;
 import com.ng.ganhuoapi.video.VideoResources;
-import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -147,7 +146,7 @@ public class HomeVideoContentRVadapter extends BaseQuickAdapter<HomeContentDataB
     /**
      * 全屏幕按键处理
      */
-    private void resolveFullBtn(final StandardGSYVideoPlayer standardGSYVideoPlayer) {
+    private void resolveFullBtn(final ListVideoPlayer standardGSYVideoPlayer) {
         standardGSYVideoPlayer.startWindowFullscreen(mContext, true, true);
     }
 

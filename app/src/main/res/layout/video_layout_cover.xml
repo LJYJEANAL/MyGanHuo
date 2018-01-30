@@ -144,13 +144,14 @@
         android:layout_centerVertical="true"
         android:visibility="invisible" />
 
-    <moe.codeest.enviews.ENPlayView
+    <ImageView
         android:id="@+id/start"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_gravity="center_vertical" />
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/video_click_play_selector" />
 
 
     <ImageView

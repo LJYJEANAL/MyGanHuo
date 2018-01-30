@@ -86,14 +86,13 @@ public class ListVideoPlayer extends StandardGSYVideoPlayer {
 
     @Override
     public GSYBaseVideoPlayer startWindowFullscreen(Context context, boolean actionBar, boolean statusBar) {
-        ListVideoPlayer gsyBaseVideoPlayer = (ListVideoPlayer) super.startWindowFullscreen(context, actionBar, statusBar);
-        ListVideoPlayer listVideoPlayer = (ListVideoPlayer) gsyBaseVideoPlayer;
+        ListVideoPlayer listVideoPlayer = (ListVideoPlayer) super.startWindowFullscreen(context, actionBar, statusBar);
         listVideoPlayer.loadCoverImage(mCoverOriginUrl, mDefaultRes);
         listVideoPlayer.mSourcePosition = mSourcePosition;
         listVideoPlayer.mUrlList = mUrlList;
         listVideoPlayer.clarity.setVisibility(VISIBLE);
         listVideoPlayer.clarity.setText(mUrlList.get(mSourcePosition).getName());
-        return gsyBaseVideoPlayer;
+        return listVideoPlayer;
     }
 
     @Override
