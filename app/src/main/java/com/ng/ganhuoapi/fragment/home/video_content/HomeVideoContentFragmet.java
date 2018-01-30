@@ -284,7 +284,8 @@ public class HomeVideoContentFragmet extends BaseFragment<HomeVideoContentPresen
                                 .start();
 
                     }
-                });
+                }
+                );
 
     }
 

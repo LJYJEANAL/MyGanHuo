@@ -3,6 +3,7 @@ package com.ng.ganhuoapi.fragment.book.content;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -41,6 +42,8 @@ public class BookContentFragment extends BaseFragment<BookContentPresenter, Book
     RecyclerView recyclerView;
     @BindView(R.id.empty_layout)
     RelativeLayout empty_error_layout;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
     /**
      * 是否加载更多
      */
@@ -84,6 +87,14 @@ public class BookContentFragment extends BaseFragment<BookContentPresenter, Book
             public void onRefresh() {
                 isLoadMore = false;
                 presenter.doRefresh();
+            }
+        });
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (recyclerView != null) {
+                    recyclerView.scrollToPosition(0);
+                }
             }
         });
         bookContentRVadapter = new BookContentRVadapter(R.layout.item_book_content_recyview, null);

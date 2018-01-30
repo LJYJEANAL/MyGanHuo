@@ -2,6 +2,7 @@ package com.ng.ganhuoapi.fragment.gankio.content;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
@@ -42,6 +43,8 @@ public class GankioContentFragment extends BaseFragment<GankioContentPresenter, 
     RecyclerView recyclerView;
     @BindView(R.id.empty_layout)
     RelativeLayout empty_error_layout;
+    @BindView(R.id.fab)
+    FloatingActionButton fab;
     /**
      * 是否加载更多
      */
@@ -84,6 +87,14 @@ public class GankioContentFragment extends BaseFragment<GankioContentPresenter, 
             public void onRefresh() {
                 isLoadMore = false;
                 presenter.doRefresh();
+            }
+        });
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (recyclerView != null) {
+                    recyclerView.scrollToPosition(0);
+                }
             }
         });
         mGankIoCustomAdapter = new GankioContentRVadapter(null);
