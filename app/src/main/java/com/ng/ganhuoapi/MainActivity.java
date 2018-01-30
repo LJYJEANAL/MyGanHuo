@@ -13,6 +13,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -21,6 +22,8 @@ import com.ng.ganhuoapi.base.BaseActivity;
 import com.ng.ganhuoapi.custom.MovingImageView;
 import com.ng.ganhuoapi.fragment.gankio.GankIoRootFragment;
 import com.ng.ganhuoapi.fragment.home.HomeRootFragment;
+import com.ng.ganhuoapi.network.IApi;
+import com.ng.ganhuoapi.network.OkHttpCreateHelper;
 import com.ng.ganhuoapi.util.ActivityCollector;
 import com.ng.ganhuoapi.util.BottomNavigationViewHelper;
 import com.ng.ganhuoapi.util.Listener;
@@ -36,6 +39,10 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /*
 *  bottomNavigationView.setSelectedItemId(R.id.menu_item_personal);  底部栏选中第几个
@@ -109,6 +116,20 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
             @Override
             public void onPageScrollStateChanged(int state) {
 
+            }
+        });
+        OkHttpCreateHelper.createApi(IApi.class,"https://u1.3gtv.net/").liveTab().enqueue(new Callback<RequestBody>() {
+            @Override
+            public void onResponse(Call<RequestBody> call, Response<RequestBody> response) {
+
+                if (response.isSuccessful()){
+                    Log.e("信息",response.body().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RequestBody> call, Throwable t) {
+                Log.e("信息", t.toString());
             }
         });
     }

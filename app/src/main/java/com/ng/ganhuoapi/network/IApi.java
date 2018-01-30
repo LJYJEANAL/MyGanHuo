@@ -11,6 +11,8 @@ import com.ng.ganhuoapi.data.video.CommentBean;
 import com.ng.ganhuoapi.data.video.VideoContentBean;
 
 import io.reactivex.Observable;
+import okhttp3.RequestBody;
+import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -21,6 +23,10 @@ import retrofit2.http.Url;
  */
 
 public interface IApi {
+//    https://u1.3gtv.net/pms-service/broadcast/broadcast_detail?portal=2&contentType=4&id=2&sectionId=4973&portalId=1
+@GET("pms-service/broadcast/broadcast_detail?portal=2&contentType=4&id=2&sectionId=4973&portalId=1")
+Call<RequestBody> liveTab();
+
     /**
      * 干货api
      * http://gank.io/api/data/Android/10/1

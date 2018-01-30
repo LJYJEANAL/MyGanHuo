@@ -99,7 +99,7 @@ public class GankioContentFragment extends BaseFragment<GankioContentPresenter, 
         });
         mGankIoCustomAdapter = new GankioContentRVadapter(null);
         recyclerView.setAdapter(mGankIoCustomAdapter);
-        if (type.equals("福利")) {
+        if (type=="福利") {
             recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         } else {
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -109,7 +109,7 @@ public class GankioContentFragment extends BaseFragment<GankioContentPresenter, 
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
                 GankioInfo gankioInfo = (GankioInfo) adapter.getItem(position);
-                if (!gankioInfo.getType().equals("福利")) {
+                if (!(gankioInfo.getType()=="福利")) {
                     Intent intent = new Intent(getActivity(), GanWebDetailsActivity.class);
                     intent.putExtra(Constant.WEB_VIEW_LOAD_URL, (gankioInfo.getUrl()));
                     intent.putExtra(Constant.WEB_VIEW_LOAD_TITLE, (gankioInfo.getDesc()));
@@ -123,7 +123,7 @@ public class GankioContentFragment extends BaseFragment<GankioContentPresenter, 
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                 GankioInfo gankioInfo = (GankioInfo) adapter.getItem(position);
-                if (gankioInfo.getType().equals("福利")) {
+                if (!(gankioInfo.getType()=="福利")) {
                     Intent intent = new Intent(getActivity(), PictureDetailsActivity.class);
                     intent.putExtra(Constant.key_BITMAP_TRANSTION, gankioInfo.getUrl());
                     intent.putExtra(Constant.key_BITMAP_WHO, gankioInfo.getWho());

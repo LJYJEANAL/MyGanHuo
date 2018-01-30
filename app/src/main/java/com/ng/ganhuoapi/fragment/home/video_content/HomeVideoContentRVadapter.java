@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -35,9 +36,11 @@ import io.reactivex.disposables.Disposable;
 public class HomeVideoContentRVadapter extends BaseQuickAdapter<HomeContentDataBean, BaseViewHolder> {
     public final static String TAG = "VideoContentRecyAdapter";
     private ImageView imageView;
+    private int width;
 
-    public HomeVideoContentRVadapter(int layoutResId, @Nullable List<HomeContentDataBean> data) {
+    public HomeVideoContentRVadapter(int width, int layoutResId, @Nullable List<HomeContentDataBean> data) {
         super(layoutResId, data);
+        this.width = width;
         setEnableLoadMore(true);
         openLoadAnimation(new CustomAnimation());
 
@@ -85,6 +88,9 @@ public class HomeVideoContentRVadapter extends BaseQuickAdapter<HomeContentDataB
             if (helper.getView(R.id.tv_video_time).getVisibility() == View.GONE) {
                 helper.getView(R.id.tv_video_time).setVisibility(View.VISIBLE);
             }
+
+            RelativeLayout videoLaytou = helper.getView(R.id.video_layout);
+            videoLaytou.getLayoutParams().height = (int) (width * 0.56);
             final ListVideoPlayer gsyVideoPlayer = helper.getView(R.id.video_player);
             gsyVideoPlayer.setIsTouchWiget(false);
             gsyVideoPlayer.setThumbImageView(imageView);
@@ -106,17 +112,17 @@ public class HomeVideoContentRVadapter extends BaseQuickAdapter<HomeContentDataB
             });
             //设置返回键
             gsyVideoPlayer.getBackButton().setVisibility(View.GONE);
-            getVideoResoue(item.getVideo_id(), new Listener<Boolean, List<String> >() {
+            getVideoResoue(item.getVideo_id(), new Listener<Boolean, List<String>>() {
                 @Override
-                public void onCallBack(Boolean aBoolean,List<String> reply) {
+                public void onCallBack(Boolean aBoolean, List<String> reply) {
                     if (aBoolean) {
 //                        item.setVideoUrl(reply.get(1));
 //                        gsyVideoPlayer.setUp(reply.get(1), false, item.getTitle());
 
-                        List<VideoResources> videoResourcesList=new ArrayList<>();
-                        String [] type=new String[]{"标清 270p","高清 480p","超清 720p", "蓝光 1080p",};
-                        for (int i = 0; i <reply.size() ; i++) {
-                            videoResourcesList.add(new VideoResources(type[i],reply.get(i)));
+                        List<VideoResources> videoResourcesList = new ArrayList<>();
+                        String[] type = new String[]{"标清 270p", "高清 480p", "超清 720p", "蓝光 1080p",};
+                        for (int i = 0; i < reply.size(); i++) {
+                            videoResourcesList.add(new VideoResources(type[i], reply.get(i)));
                         }
                         gsyVideoPlayer.setUp(videoResourcesList, false, item.getTitle());
                     }
@@ -145,7 +151,7 @@ public class HomeVideoContentRVadapter extends BaseQuickAdapter<HomeContentDataB
         standardGSYVideoPlayer.startWindowFullscreen(mContext, true, true);
     }
 
-    private void getVideoResoue(final String video_id, final Listener<Boolean, List<String> > listener) {
+    private void getVideoResoue(final String video_id, final Listener<Boolean, List<String>> listener) {
         final List<String> list = new ArrayList<>();
         NetManager.getInstance().getVideoResouCall(video_id, new Listener<Disposable, VideoContentBean.DataBean>() {
             @Override
@@ -158,17 +164,17 @@ public class HomeVideoContentRVadapter extends BaseQuickAdapter<HomeContentDataB
                     VideoContentBean.DataBean.VideoListBean videoListBean = reply.getVideo_list();
                     if (videoListBean.getVideo_3() != null) {
                         String base64 = videoListBean.getVideo_3().getMain_url();
-                        String  url = (new String(Base64.decode(base64.getBytes(), Base64.DEFAULT)));
+                        String url = (new String(Base64.decode(base64.getBytes(), Base64.DEFAULT)));
                         list.add(url);
                     }
                     if (videoListBean.getVideo_2() != null) {
                         String base64 = videoListBean.getVideo_2().getMain_url();
-                        String  url = (new String(Base64.decode(base64.getBytes(), Base64.DEFAULT)));
+                        String url = (new String(Base64.decode(base64.getBytes(), Base64.DEFAULT)));
                         list.add(url);
                     }
                     if (videoListBean.getVideo_1() != null) {
                         String base64 = videoListBean.getVideo_1().getMain_url();
-                        String  url = (new String(Base64.decode(base64.getBytes(), Base64.DEFAULT)));
+                        String url = (new String(Base64.decode(base64.getBytes(), Base64.DEFAULT)));
                         list.add(url);
                     }
 

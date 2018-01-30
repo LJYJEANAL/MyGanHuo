@@ -88,6 +88,7 @@ public class HomeVideoContentFragmet extends BaseFragment<HomeVideoContentPresen
 
     @Override
     protected void initView(View view) {
+        int width=Public.getScreenWidthPixels(getActivity());
         unbinder = ButterKnife.bind(this, view);
         swipeRefresh.setRefreshing(true);
         swipeRefresh.setColorSchemeResources(R.color.md_red, R.color.md_purple,
@@ -113,7 +114,7 @@ public class HomeVideoContentFragmet extends BaseFragment<HomeVideoContentPresen
         recyclerView.setLayoutManager(linearLayoutManager);
 
 //        videoContentRecyAdapter = new VideoContentRecyAdapter(getActivity(), null);
-        videoContentRecyAdapter = new HomeVideoContentRVadapter(R.layout.item_home_video_recyview, null);
+        videoContentRecyAdapter = new HomeVideoContentRVadapter(width,R.layout.item_home_video_recyview, null);
         recyclerView.setAdapter(videoContentRecyAdapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             int firstVisibleItem, lastVisibleItem;

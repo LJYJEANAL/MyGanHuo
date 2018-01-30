@@ -23,8 +23,6 @@ public class OkHttpCreateHelper {
 //            .setLevel(HttpLoggingInterceptor.Level.BODY);
     private static CacheInterceptor cacheInterceptor = new CacheInterceptor();
     private static OkHttpClient okHttpClient = new OkHttpClient.Builder()
-            //SSL证书
-            .sslSocketFactory(TrustManager.getUnsafeOkHttpClient())
             .hostnameVerifier(org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER)
             //打印日志
 //            .addInterceptor(interceptor)
@@ -38,6 +36,9 @@ public class OkHttpCreateHelper {
             .writeTimeout(TIMEOUT_READ, TimeUnit.SECONDS)
             //失败重连
             .retryOnConnectionFailure(true)
+            //SSL证书
+//            .sslSocketFactory(TrustManager.getSocketFactory(AndroidFactory.getApplicationContext()))
+            .sslSocketFactory(TrustManager.getUnsafeOkHttpClient())
             .build();
 
     public static <T> T createApi(Class<T> clazz, String url) {
