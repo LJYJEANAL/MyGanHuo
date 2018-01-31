@@ -16,6 +16,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.ng.ganhuoapi.base.BaseActivity;
@@ -24,7 +28,6 @@ import com.ng.ganhuoapi.fragment.gankio.GankIoRootFragment;
 import com.ng.ganhuoapi.fragment.home.HomeRootFragment;
 import com.ng.ganhuoapi.network.IApi;
 import com.ng.ganhuoapi.network.OkHttpCreateHelper;
-import com.ng.ganhuoapi.util.ActivityCollector;
 import com.ng.ganhuoapi.util.BottomNavigationViewHelper;
 import com.ng.ganhuoapi.util.Listener;
 import com.ng.ganhuoapi.util.Public;
@@ -59,6 +62,8 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
     ViewPager viewPager;
     @BindView(R.id.drawerLayout)
     DrawerLayout drawerLayout;
+    @BindView(R.id.ll_content)
+    LinearLayout llContent;
 
     private Drawable icon = null;
     private String title;
@@ -165,8 +170,9 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                 }
                 navigationView.getMenu().findItem(R.id.nav_camera).setIcon(icon);
                 navigationView.getMenu().findItem(R.id.nav_camera).setTitle(title);
-                SettingUtil.getInstance().setIsIsCancleSp(true);
+                SettingUtil.getInstance().setIsCancleSp(true);
                 SettingUtil.getInstance().setIsFirstTime(false);
+
                 Public.reStartActivity(this);
                 break;
         }
@@ -212,10 +218,26 @@ public class MainActivity extends BaseActivity implements BottomNavigationView.O
                     Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
                 } else {
                     GSYVideoPlayer.releaseAllVideos();
-                    SettingUtil.getInstance().setIsIsCancleSp(false);
-                    ActivityCollector.finishAll();
 
-                    finish();
+                    Animation anim = AnimationUtils.loadAnimation(this, R.anim.tv_off);
+                    anim.setAnimationListener(new Animation.AnimationListener() {
+
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            SettingUtil.getInstance().setIsCancleSp(false);
+                            Log.i("信息",SettingUtil.getInstance().getIsCancleSp()+"-onAnimationEnd");
+                            Public.killAPP(MainActivity.this);
+                        }
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+                    ((View) llContent.getParent()).startAnimation(anim);
                 }
                 return true;
             }

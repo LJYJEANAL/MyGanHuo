@@ -1,6 +1,7 @@
 package com.ng.ganhuoapi.util;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -119,7 +120,24 @@ public class Public {
         activity. startActivity(intent);
         activity.  overridePendingTransition(0,0);
     }
-
+    /**
+     * 方法说明：退出程序
+     */
+    @SuppressWarnings("deprecation")
+    public static void killAPP(Context context) {
+        if (Build.VERSION.SDK_INT < 8) {
+            android.os.Process.killProcess(android.os.Process.myPid());
+            ActivityManager manager = (ActivityManager) context.getSystemService(Activity.ACTIVITY_SERVICE);
+            manager.restartPackage(context.getPackageName());
+            System.exit(0);// 退出程序
+        } else {
+            android.os.Process.killProcess(android.os.Process.myPid());
+            ActivityManager manager = (ActivityManager) context.getSystemService(Activity.ACTIVITY_SERVICE);
+            manager.killBackgroundProcesses(context.getPackageName());
+            System.exit(0);// 退出程序
+        }
+        ActivityCollector.finishAll();
+    }
     /**
      * 整个应用重新启动
      * @param activity
